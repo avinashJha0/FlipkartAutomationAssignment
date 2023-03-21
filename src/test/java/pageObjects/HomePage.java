@@ -12,7 +12,7 @@ import java.util.List;
 
 public class HomePage {
 
-    WebDriver driver;
+    public static WebDriver driver;
 
     public HomePage(WebDriver driver)
     {

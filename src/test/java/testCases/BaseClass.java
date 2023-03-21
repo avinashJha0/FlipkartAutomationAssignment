@@ -11,12 +11,12 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class BaseClass {
-    ReadConfig rc = new ReadConfig();
+    static ReadConfig rc = new ReadConfig();
 
-    public String baseURL = rc.getApplicationURL();
+    public static String baseURL = rc.getApplicationURL();
     public static WebDriver driver;
     @BeforeClass
-    public void setup() throws IOException
+    public static void setup() throws IOException
     {
 
         System.setProperty("webdriver.chrome.driver",rc.getChromepath());
@@ -34,7 +34,7 @@ public class BaseClass {
         System.out.println("Browser closed");
     }
 
-    public void childWindow(){
+    public static void childWindow(){
 
         ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
         int size = tabs.size();

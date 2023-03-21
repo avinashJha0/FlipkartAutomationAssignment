@@ -3,12 +3,6 @@ package testCases;
 import org.testng.annotations.Test;
 import pageObjects.CartPage;
 import pageObjects.HomePage;
-import utilities.ReadConfig;
-
-import java.time.Duration;
-import java.util.Iterator;
-import java.util.Scanner;
-import java.util.Set;
 
 public class TotalAmountTest extends BaseClass {
 

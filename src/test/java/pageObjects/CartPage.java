@@ -1,18 +1,21 @@
 package pageObjects;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class CartPage {
 
-    WebDriver driver;
+    public static WebDriver driver;
 
 
     public CartPage(WebDriver driver)
@@ -71,6 +74,13 @@ public class CartPage {
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
                 wait.until(ExpectedConditions.elementToBeClickable(removeLaptop));
                 removeLaptop.click();
+                FluentWait fwait = new FluentWait(driver);
+
+                fwait.withTimeout(Duration.ofSeconds(60));
+
+                fwait.pollingEvery(Duration.ofSeconds(10));
+                fwait.until(ExpectedConditions.visibilityOf(removeConfirmation));
+                wait.until(ExpectedConditions.elementToBeClickable(removeConfirmation));
                 removeConfirmation.click();
             }
             case "Mobile" -> {
@@ -78,6 +88,7 @@ public class CartPage {
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
                 wait.until(ExpectedConditions.elementToBeClickable(removeMobile));
                 removeMobile.click();
+                wait.until(ExpectedConditions.elementToBeClickable(removeConfirmation));
                 removeConfirmation.click();
             }
             case "TV" -> {
@@ -85,6 +96,7 @@ public class CartPage {
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
                 wait.until(ExpectedConditions.elementToBeClickable(removeTV));
                 removeTV.click();
+                wait.until(ExpectedConditions.elementToBeClickable(removeConfirmation));
                 removeConfirmation.click();
             }
         }
