@@ -23,7 +23,7 @@ public class BaseClass {
         driver = new ChromeDriver();
         System.out.println("Chrome Browser opened");
         driver.get(baseURL);
-        System.out.println("Flipkart website opened");
+        System.out.println("Flipkart website");
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
     }
